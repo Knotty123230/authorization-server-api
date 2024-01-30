@@ -77,7 +77,7 @@ public class AuthorizationServerConfig {
         RequestMatcher endpointsMatcher = authorizationServerConfigurer
                 .getEndpointsMatcher();
 
-        Function<OidcUserInfoAuthenticationContext, OidcUserInfo> userInfoMapper = (context) -> {
+        Function<OidcUserInfoAuthenticationContext, OidcUserInfo> userInfoMapper = context -> {
             OidcUserInfoAuthenticationToken authentication = context.getAuthentication();
             JwtAuthenticationToken principal = (JwtAuthenticationToken) authentication.getPrincipal();
 
@@ -86,7 +86,7 @@ public class AuthorizationServerConfig {
 
         authorizationServerConfigurer
                 .oidc((oidc) -> oidc
-                        .userInfoEndpoint((userInfo) -> userInfo
+                        .userInfoEndpoint(userInfo -> userInfo
                                 .userInfoMapper(userInfoMapper)
                         )
                 );
@@ -154,15 +154,6 @@ public class AuthorizationServerConfig {
     }
 
 
-//    @Bean
-//    public OAuth2AuthorizationService authorizationService(AuthorizationRepository authorizationRepository, RegisteredClientRepository repository) {
-//        return new JpaOAuth2AuthorizationService(authorizationRepository,repository);
-//    }
-//
-//    @Bean
-//    public OAuth2AuthorizationConsentService authorizationConsentService(AuthorizationConsentRepository authorizationConsentRepository, RegisteredClientRepository registeredClientRepository) {
-//        return new JpaOAuth2AuthorizationConsentService(authorizationConsentRepository, registeredClientRepository);
-//    }
 
 
     @Bean

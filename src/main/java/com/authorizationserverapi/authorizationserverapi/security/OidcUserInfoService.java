@@ -1,6 +1,7 @@
 package com.authorizationserverapi.authorizationserverapi.security;
 
 import com.authorizationserverapi.authorizationserverapi.entity.User;
+import jakarta.annotation.PostConstruct;
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ public class OidcUserInfoService {
     public OidcUserInfoService(AuthorizationServerUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
+
 
     public OidcUserInfo loadUser(String username) {
         User user = (User) userDetailsService.loadUserByUsername(username);

@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 public class User implements UserDetails {
     @Id
     private UUID identifier;
-    @Column(unique = true)
     private String username;
     private String password;
     private String firstName;

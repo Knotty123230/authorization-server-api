@@ -2,6 +2,7 @@ package com.authorizationserverapi.authorizationserverapi.service;
 
 import com.authorizationserverapi.authorizationserverapi.entity.User;
 import com.authorizationserverapi.authorizationserverapi.repository.UserRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
