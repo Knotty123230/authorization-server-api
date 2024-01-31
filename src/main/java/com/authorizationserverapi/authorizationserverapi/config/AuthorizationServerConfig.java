@@ -60,6 +60,9 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
 
+/**
+ * The type Authorization server config.
+ */
 @Configuration(proxyBeanMethods = false)
 public class AuthorizationServerConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizationServerConfig.class);
@@ -69,6 +72,13 @@ public class AuthorizationServerConfig {
     }
 
 
+    /**
+     * Authorization server security filter chain security filter chain.
+     *
+     * @param http the http
+     * @return the security filter chain
+     * @throws Exception the exception
+     */
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE + 1)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -154,8 +164,11 @@ public class AuthorizationServerConfig {
     }
 
 
-
-
+    /**
+     * Jwk source jwk source.
+     *
+     * @return the jwk source
+     */
     @Bean
     public JWKSource<SecurityContext> jwkSource() {
         RSAKey rsaKey = Jwks.generateRsa();
@@ -163,11 +176,22 @@ public class AuthorizationServerConfig {
         return (jwkSelector, securityContext) -> jwkSelector.select(jwkSet);
     }
 
+    /**
+     * Jwt decoder jwt decoder.
+     *
+     * @param jwkSource the jwk source
+     * @return the jwt decoder
+     */
     @Bean
     public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
         return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
     }
 
+    /**
+     * Authorization server settings authorization server settings.
+     *
+     * @return the authorization server settings
+     */
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
         return AuthorizationServerSettings.builder().build();

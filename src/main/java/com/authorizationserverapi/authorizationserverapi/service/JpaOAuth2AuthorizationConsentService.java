@@ -16,11 +16,20 @@ import org.springframework.util.StringUtils;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The type Jpa o auth 2 authorization consent service.
+ */
 @Component
 public class JpaOAuth2AuthorizationConsentService implements OAuth2AuthorizationConsentService {
     private final AuthorizationConsentRepository authorizationConsentRepository;
     private final RegisteredClientRepository registeredClientRepository;
 
+    /**
+     * Instantiates a new Jpa o auth 2 authorization consent service.
+     *
+     * @param authorizationConsentRepository the authorization consent repository
+     * @param registeredClientRepository     the registered client repository
+     */
     public JpaOAuth2AuthorizationConsentService(AuthorizationConsentRepository authorizationConsentRepository, RegisteredClientRepository registeredClientRepository) {
         Assert.notNull(authorizationConsentRepository, "authorizationConsentRepository cannot be null");
         Assert.notNull(registeredClientRepository, "registeredClientRepository cannot be null");

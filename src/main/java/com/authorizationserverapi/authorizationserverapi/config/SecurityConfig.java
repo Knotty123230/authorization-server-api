@@ -10,9 +10,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+/**
+ * The type Security config.
+ */
 @Configuration
 public class SecurityConfig {
 
+    /**
+     * Password encoder password encoder.
+     *
+     * @return the password encoder
+     */
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -27,6 +35,12 @@ public class SecurityConfig {
 //    }
 
 
+    /**
+     * Jdbc template jdbc template.
+     *
+     * @param dataSource the data source
+     * @return the jdbc template
+     */
     @Bean
     public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);

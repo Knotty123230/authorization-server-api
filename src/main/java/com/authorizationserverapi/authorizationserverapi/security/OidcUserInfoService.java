@@ -5,15 +5,29 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Oidc user info service.
+ */
 @Service
 public class OidcUserInfoService {
     private final AuthorizationServerUserDetailsService userDetailsService;
 
+    /**
+     * Instantiates a new Oidc user info service.
+     *
+     * @param userDetailsService the user details service
+     */
     public OidcUserInfoService(AuthorizationServerUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 
 
+    /**
+     * Load user oidc user info.
+     *
+     * @param username the username
+     * @return the oidc user info
+     */
     public OidcUserInfo loadUser(String username) {
         User user = (User) userDetailsService.loadUserByUsername(username);
         return OidcUserInfo.builder()

@@ -10,11 +10,19 @@ import java.security.spec.ECParameterSpec;
 import java.security.spec.ECPoint;
 import java.security.spec.EllipticCurve;
 
+/**
+ * The type Key generator utils.
+ */
 final class KeyGeneratorUtils {
 
     private KeyGeneratorUtils() {
     }
 
+    /**
+     * Generate secret key secret key.
+     *
+     * @return the secret key
+     */
     static SecretKey generateSecretKey() {
         SecretKey hmacKey;
         try {
@@ -25,6 +33,11 @@ final class KeyGeneratorUtils {
         return hmacKey;
     }
 
+    /**
+     * Generate rsa key key pair.
+     *
+     * @return the key pair
+     */
     static KeyPair generateRsaKey() {
         KeyPair keyPair;
         try {
@@ -37,6 +50,11 @@ final class KeyGeneratorUtils {
         return keyPair;
     }
 
+    /**
+     * Generate ec key key pair.
+     *
+     * @return the key pair
+     */
     static KeyPair generateEcKey() {
         EllipticCurve ellipticCurve = new EllipticCurve(
                 new ECFieldFp(

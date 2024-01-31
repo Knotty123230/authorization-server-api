@@ -22,11 +22,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * The type Jpa registered client repository.
+ */
 @Component
 public class JpaRegisteredClientRepository implements RegisteredClientRepository {
     private final ClientRepository clientRepository;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    /**
+     * Instantiates a new Jpa registered client repository.
+     *
+     * @param clientRepository the client repository
+     */
     public JpaRegisteredClientRepository(ClientRepository clientRepository) {
         Assert.notNull(clientRepository, "clientRepository cannot be null");
         this.clientRepository = clientRepository;

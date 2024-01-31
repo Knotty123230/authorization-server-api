@@ -13,11 +13,19 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
+/**
+ * The type Jwks.
+ */
 public class Jwks {
 
     private Jwks() {
     }
 
+    /**
+     * Generate rsa rsa key.
+     *
+     * @return the rsa key
+     */
     public static RSAKey generateRsa() {
         KeyPair keyPair = KeyGeneratorUtils.generateRsaKey();
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
@@ -28,6 +36,11 @@ public class Jwks {
                 .build();
     }
 
+    /**
+     * Generate ec ec key.
+     *
+     * @return the ec key
+     */
     public static ECKey generateEc() {
         KeyPair keyPair = KeyGeneratorUtils.generateEcKey();
         ECPublicKey publicKey = (ECPublicKey) keyPair.getPublic();
@@ -39,6 +52,11 @@ public class Jwks {
                 .build();
     }
 
+    /**
+     * Generate secret octet sequence key.
+     *
+     * @return the octet sequence key
+     */
     public static OctetSequenceKey generateSecret() {
         SecretKey secretKey = KeyGeneratorUtils.generateSecretKey();
         return new OctetSequenceKey.Builder(secretKey)

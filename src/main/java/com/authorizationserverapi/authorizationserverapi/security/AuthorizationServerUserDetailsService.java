@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ * The type Authorization server user details service.
+ */
 @Service
 public class AuthorizationServerUserDetailsService implements UserDetailsService {
 
@@ -23,6 +26,12 @@ public class AuthorizationServerUserDetailsService implements UserDetailsService
 
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * Instantiates a new Authorization server user details service.
+     *
+     * @param userService     the user service
+     * @param passwordEncoder the password encoder
+     */
     public AuthorizationServerUserDetailsService(IUserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
